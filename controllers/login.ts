@@ -6,9 +6,15 @@ import {
 } from "https://deno.land/x/djwt/create.ts";
 import { JWT_KEY } from "../config/config.ts";
 import { Context } from "https://deno.land/x/oak/mod.ts";
+import { Token } from "../middleware/validateToken.ts";
+
+interface LoginBody {
+  username: string;
+  password: string;
+}
 
 export const login = async ({ request, response }: Context): Promise<void> => {
-  const body = ((await request.body()).value);
+  const body: LoginBody = ((await request.body()).value);
   if (body.username && body.password) {
     const payload: Payload = {
       iss: `${body.username} ${body.password}`,
@@ -19,7 +25,7 @@ export const login = async ({ request, response }: Context): Promise<void> => {
       typ: "JWT",
     };
 
-    const token = makeJwt({ header, payload, key: JWT_KEY });
+    const token: Token = makeJwt({ header, payload, key: JWT_KEY });
     response.status = 200;
     response.body = { token };
   } else {

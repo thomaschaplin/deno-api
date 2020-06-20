@@ -1,11 +1,12 @@
 import { Context } from "https://deno.land/x/oak/mod.ts";
-import Database from "../config/database.ts";
+import MongoDatabase from "../config/database.ts";
 import { DB_NAME, DB_URL } from "../config/config.ts";
+import { Database } from "https://deno.land/x/mongo@v0.8.0/mod.ts";
 
-const db = new Database(DB_NAME, DB_URL);
+const db = new MongoDatabase(DB_NAME, DB_URL);
 db.connect();
 
-const database = db.getDatabase;
+const database: Database = db.getDatabase;
 const tasks = database.collection("tasks");
 
 interface Task {
@@ -22,7 +23,7 @@ export const getAllTasks = async ({ response }: Context): Promise<void> => {
 export const addTask = async (
   { request, response }: Context,
 ): Promise<void> => {
-  const task = ((await request.body()).value);
+  const task: Task = ((await request.body()).value);
   if (task.title && task.description) {
     await tasks.insertOne(task);
     response.status = 200;
@@ -44,9 +45,8 @@ export const updateTaskById = async (
   },
 ): Promise<void> => {
   const { id } = params as { id: string };
-
-  const taskToUpdate = ((await request.body()).value);
-  const task = await tasks.findOne({ _id: { "$oid": id } });
+  const taskToUpdate: Task = ((await request.body()).value);
+  const task: Task = await tasks.findOne({ _id: { "$oid": id } });
   if (task) {
     const { matchedCount } = await tasks.updateOne(
       { _id: { "$oid": id } },
@@ -69,7 +69,7 @@ export const getTaskById = async (
   { params, response }: { params: { id: string }; response: any },
 ): Promise<void> => {
   const { id } = params as { id: string };
-  const task = await tasks.findOne(
+  const task: Task = await tasks.findOne(
     { _id: { "$oid": id } },
   );
   if (task) {
@@ -85,7 +85,7 @@ export const deleteTask = async (
   { params, response }: { params: { id: string }; response: any },
 ): Promise<void> => {
   const { id } = params as { id: string };
-  const task = await tasks.findOne({ _id: { "$oid": id } });
+  const task: Task = await tasks.findOne({ _id: { "$oid": id } });
 
   if (task) {
     await tasks.deleteOne({ _id: { "$oid": id } });
