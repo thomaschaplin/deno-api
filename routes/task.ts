@@ -5,6 +5,7 @@ import {
   updateTaskById,
   getTaskById,
   deleteTask,
+  deleteAllTasks,
 } from "../controllers/task.ts";
 import validateToken from "../middleware/validateToken.ts";
 
@@ -15,5 +16,6 @@ taskRouter.post("/tasks", validateToken, addTask);
 taskRouter.put("/tasks/:id", validateToken, updateTaskById);
 taskRouter.get("/tasks/:id", getTaskById);
 taskRouter.delete("/tasks/:id", validateToken, deleteTask);
+taskRouter.delete("/tasks", validateToken, deleteAllTasks);
 
 export default taskRouter;

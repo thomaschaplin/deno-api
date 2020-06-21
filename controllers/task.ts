@@ -96,3 +96,15 @@ export const deleteTask = async (
   response.status = 404;
   response.body = { message: "Task could not be found." };
 };
+
+export const deleteAllTasks = async ({ response }: Context): Promise<void> => {
+  const allTasks: Task[] = await tasks.find();
+  if (allTasks.length === 0) {
+    response.status = 404;
+    response.body = { message: "No tasks found." };
+    return;
+  }
+  tasks.deleteMany({});
+  response.status = 204;
+  response.body = { message: "All tasks deleted successfully." };
+};
