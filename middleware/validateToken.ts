@@ -7,7 +7,7 @@ import { JWT_KEY } from "../config/config.ts";
 
 export type Token = string;
 
-const validateToken = async (ctx: Context, next: any) => {
+const validateToken = async (ctx: Context, next: Function) => {
   const jwtToken: Token = ctx.request.headers.get("Authorization")
     ? ctx.request.headers.get("Authorization")!
     : "";

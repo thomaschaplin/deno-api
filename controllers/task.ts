@@ -1,4 +1,4 @@
-import { Context } from "https://deno.land/x/oak/mod.ts";
+import { Context, Response, Request } from "https://deno.land/x/oak/mod.ts";
 import MongoDatabase from "../config/database.ts";
 import { DB_NAME, DB_URL } from "../config/config.ts";
 import { Database } from "https://deno.land/x/mongo@v0.8.0/mod.ts";
@@ -40,8 +40,8 @@ export const addTask = async (
 export const updateTaskById = async (
   { params, request, response }: {
     params: { id: string };
-    response: any;
-    request: any;
+    response: Response;
+    request: Request;
   },
 ): Promise<void> => {
   const { id } = params as { id: string };
@@ -66,7 +66,7 @@ export const updateTaskById = async (
 };
 
 export const getTaskById = async (
-  { params, response }: { params: { id: string }; response: any },
+  { params, response }: { params: { id: string }; response: Response },
 ): Promise<void> => {
   const { id } = params as { id: string };
   const task: Task = await tasks.findOne(
@@ -82,7 +82,7 @@ export const getTaskById = async (
 };
 
 export const deleteTask = async (
-  { params, response }: { params: { id: string }; response: any },
+  { params, response }: { params: { id: string }; response: Response },
 ): Promise<void> => {
   const { id } = params as { id: string };
   const task: Task = await tasks.findOne({ _id: { "$oid": id } });

@@ -3,7 +3,7 @@ import { isHttpError } from "https://deno.land/x/oak/mod.ts";
 
 export const validateStatusCode = async (
   ctx: Context,
-  next: any,
+  next: Function,
 ): Promise<void> => {
   try {
     await next();
