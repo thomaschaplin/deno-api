@@ -1,4 +1,4 @@
-import { Application } from "https://deno.land/x/oak/mod.ts";
+import { Application } from "./deps.ts";
 import taskRouter from "./routes/task.ts";
 import loginRouter from "./routes/login.ts";
 import { HOST, PORT } from "./config/config.ts";

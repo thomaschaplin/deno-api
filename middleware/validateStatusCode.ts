@@ -1,5 +1,5 @@
-import { Context } from "https://deno.land/x/oak/mod.ts";
-import { isHttpError } from "https://deno.land/x/oak/mod.ts";
+import { Context } from "../deps.ts";
+import { isHttpError } from "../deps.ts";
 
 export const validateStatusCode = async (
   ctx: Context,

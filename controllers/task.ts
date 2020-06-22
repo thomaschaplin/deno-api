@@ -1,7 +1,7 @@
-import { Context, Response, Request } from "https://deno.land/x/oak/mod.ts";
+import { Context, Response, Request } from "../deps.ts";
 import MongoDatabase from "../config/database.ts";
 import { DB_NAME, DB_URL } from "../config/config.ts";
-import { Database } from "https://deno.land/x/mongo@v0.8.0/mod.ts";
+import { Database } from "../deps.ts";
 
 const db = new MongoDatabase(DB_NAME, DB_URL);
 db.connect();

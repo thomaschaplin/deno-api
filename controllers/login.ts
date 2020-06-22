@@ -3,9 +3,9 @@ import {
   setExpiration,
   Jose,
   Payload,
-} from "https://deno.land/x/djwt/create.ts";
+} from "../deps.ts";
 import { JWT_KEY } from "../config/config.ts";
-import { Context } from "https://deno.land/x/oak/mod.ts";
+import { Context } from "../deps.ts";
 import { Token } from "../middleware/validateToken.ts";
 
 interface LoginBody {

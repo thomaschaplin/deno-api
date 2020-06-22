@@ -1,8 +1,8 @@
-import { Context } from "https://deno.land/x/oak/mod.ts";
+import { Context } from "../deps.ts";
 import {
   validateJwt,
   JwtValidation,
-} from "https://deno.land/x/djwt/validate.ts";
+} from "../deps.ts";
 import { JWT_KEY } from "../config/config.ts";
 
 export type Token = string;
