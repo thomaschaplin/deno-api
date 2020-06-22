@@ -32,7 +32,7 @@ brew services start mongodb-community@4.2
 #### Run Deno
 
 ```
-./start.ts
+./scripts/start.ts
 ```
 
 ## Running the tests
@@ -42,5 +42,5 @@ Ensure the API is running, you should see `Listening on port: 4000` in the termi
 #### Run Deno Test
 
 ```
-./test.ts
+./scripts/test.ts
 ```
