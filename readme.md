@@ -29,6 +29,13 @@ Instructions on how to install mongodb can be found [here](https://docs.mongodb.
 brew services start mongodb-community@4.2
 ```
 
+
+#### Download Cache
+
+```
+./scripts/setup.ts
+```
+
 #### Run Deno
 
 ```
@@ -43,4 +50,12 @@ Ensure the API is running, you should see `Listening on port: 4000` in the termi
 
 ```
 ./scripts/test.ts
+```
+
+## Developer Notes
+
+#### Create lock file
+
+```
+./scripts/lock.ts
 ```
