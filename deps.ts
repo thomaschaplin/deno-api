@@ -17,3 +17,4 @@ export {
   validateJwt,
   JwtValidation,
 } from "https://deno.land/x/djwt/validate.ts";
+export { assertEquals } from "https://deno.land/std/testing/asserts.ts";
