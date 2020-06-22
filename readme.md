@@ -32,7 +32,7 @@ brew services start mongodb-community@4.2
 #### Run Deno
 
 ```
-deno run --allow-net --allow-write --allow-read --allow-plugin --allow-env --unstable app.ts
+./start.ts
 ```
 
 ## Running the tests
