@@ -42,5 +42,5 @@ Ensure the API is running, you should see `Listening on port: 4000` in the termi
 #### Run Deno Test
 
 ```
-deno test --allow-net
+deno test --allow-net --allow-write --allow-read --allow-plugin --unstable
 ```
